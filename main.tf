@@ -1,19 +1,23 @@
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "5.65.0"
+    }
+  }
+}
+
 provider "aws" {
   region = "us-west-2" // Replace with your desired region
 }
 
 module "s3_data_bucket" {
-  source           = "git@github.com/rannaladasu/broccoli-module.git//modules/s3_bucket"
-  resource_prefix  = "broccoli" // Replace with your desired prefix
+  source           = "git@github.com:YPRIYANKA0007/modules.git"
+  resource_prefix  = "modules" // Replace with your desired prefix
 tags = {}
 }
 
 
-module "route53" {
-  source      = "git@github.com/rannaladasu/broccoli-module.git//modules/route53"
-  domain_name = "broccoli"
-  a_record_ip = "192.0.2.1"
-}
 
 # resource "aws_s3_bucket" "data" {
 #   # bucket is public
